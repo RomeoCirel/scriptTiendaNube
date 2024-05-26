@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SERVER['REQUEST_URI'] === '/catch-data') {
-    $headers = ['id', 'data', 'ip', 'forwarded_for', 'user_agent', 'referer', 'request_uri', 'browser', 'is_mobile', 'Operating System', 'headers'];
+    $headers = ['id', 'data', 'ip', 'forwarded_for', 'user_agent', 'referer', 'request_uri', 'browser', 'is_incognito', 'is_mobile', 'Operating System', 'headers'];
     $file = 'log.csv';
 
     if (!file_exists($file) || filesize($file) == 0) {
@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SERVER['REQUEST_URI'] === '/catch
     $TO_LOG['referer'] = $_SERVER['HTTP_REFERER'];
     $TO_LOG['request_uri'] = $_SERVER['REQUEST_URI'];
     $TO_LOG['BROWSER'] = json_encode($browser);
+    $TO_LOG['is_incognito'] = $requestData['isIncognito'] ?? null;
     $TO_LOG['is_mobile'] = $browser['ismobiledevice'] ?? null;
     $TO_LOG['Operating System'] = $browser['platform'] ?? null;
     $TO_LOG['headers'] = json_encode(getallheaders());
