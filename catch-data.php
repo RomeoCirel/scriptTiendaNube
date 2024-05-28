@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SERVER['REQUEST_URI'] === '/catch
 function checkVPN(): string
 {
     $vpnApiUrl = 'https://ipqualityscore.com/api/json/ip/29Ly8F9kGxcA3Y65nEyUk8pCQB7EhXex/';
-    $ip = $_SERVER['REMOTE_ADDR'] || $_SERVER['HTTP_X_FORWARDED_FOR'][0] || null;
+    $ip = $_SERVER['HTTP_CF_CONNECTING_IP'] ?? $_SERVER['REMOTE_ADDR'] || $_SERVER['HTTP_X_FORWARDED_FOR'][0] || null;
 
 //    $ip = "2001:67c:2628:647:8::60"; // VPN IP
 //    $ip = "45.230.45.233"; // Real IP
